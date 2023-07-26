@@ -7,6 +7,7 @@ import {
   SearchFeed,
   ChannelDetail,
 } from "./components/index";
+import History from "./components/History";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Error from "./components/Error";
 
@@ -25,7 +26,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Home />,
-    errorElement:<Error/>,
+    errorElement: <Error />,
     children: [
       {
         index: true,
@@ -43,12 +44,16 @@ const router = createBrowserRouter([
         path: "search/:searchid",
         element: <SearchFeed />,
       },
+      {
+        path: "history",
+        element: <History />,
+      },
     ],
   },
 ]);
 const App = () => (
   <ThemeProvider theme={theme}>
-    <RouterProvider router={router}/>
+    <RouterProvider router={router} />
   </ThemeProvider>
 );
 export default App;

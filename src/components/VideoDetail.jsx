@@ -13,7 +13,6 @@ const VideoDetail = ({}) => {
   const [videos, setvideos] = useState([]);
   const [isloadingVideo, setisloadingVideo] = useState(true);
   const [isloadingrelated, setisloadingrelated] = useState(true);
-
   useEffect(() => {
     setisloadingVideo(true);
     setisloadingrelated(true);
@@ -27,8 +26,9 @@ const VideoDetail = ({}) => {
         setisloadingrelated(false);
       }
     );
+    const data=JSON.parse(localStorage.getItem('history'));
+
   }, [id]);
-  console.log(data);
   return (
     <Box minHeight="92vh">
       <Stack

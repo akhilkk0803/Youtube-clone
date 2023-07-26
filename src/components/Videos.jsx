@@ -1,4 +1,12 @@
-import { Box, Card, CardContent, Grid, Paper, Stack } from "@mui/material";
+import {
+  Box,
+  Card,
+  CardContent,
+  Grid,
+  Paper,
+  Stack,
+  Typography,
+} from "@mui/material";
 import React from "react";
 import CardVideo from "./CardVideo";
 import CardChannel from "./CardChannel";
@@ -12,21 +20,28 @@ const Videos = ({ data, direction }) => {
       direction={direction || "row"}
       justifyContent="space-evenly"
     >
-      {data.map(
-        (el, idx) =>
-          !el.id.playlistId && (
-            <Box
-              key={idx}
-              sx={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
-              {el.id.videoId && <CardVideo video={el} />}
-              {el.id.channelId && <CardChannel channel={el} />}
-            </Box>
-          )
+      {data ? (
+        data.map(
+          (el, idx) =>
+            !el?.id?.playlistId && (
+              <Box
+                key={idx}
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                {/* {console.log(el)} */}
+                {el?.id?.videoId && <CardVideo video={el} />}
+                {el?.id?.channelId && <CardChannel channel={el} />}
+              </Box>
+            )
+        )
+      ) : (
+        <Typography variant="h5" color="secondary">
+          Not data available
+        </Typography>
       )}
     </Stack>
   );

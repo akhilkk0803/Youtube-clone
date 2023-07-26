@@ -5,9 +5,13 @@ import { NavLink } from "react-router-dom";
 import SearchBar from "./SearchBar";
 const NavBar = () => {
   return (
-    <AppBar position="sticky" color="primary" sx={{
-      marginBottom:"20px"
-    }}>
+    <AppBar
+      position="sticky"
+      color="primary"
+      sx={{
+        marginBottom: "20px",
+      }}
+    >
       <Toolbar
         sx={{
           minHeight: "70px",
@@ -19,7 +23,11 @@ const NavBar = () => {
             <img src={logo} height={45} alt="logo" />
           </NavLink>
         </Box>
-        <SearchBar />
+        <Stack>
+          <Box>
+            <SearchBar />
+          </Box>
+        </Stack>
       </Toolbar>
     </AppBar>
   );
