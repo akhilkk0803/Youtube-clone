@@ -9,7 +9,12 @@ import Box from "@mui/material/Box";
 import InputAdornment from "@mui/material/InputAdornment";
 import { useNavigate } from "react-router";
 import { Button } from "@mui/material";
+import { modeactions } from "../store/mode";
+import Stack from "@mui/material";
+import { useSelector, useDispatch } from "react-redux";
 const SearchBar = () => {
+  const dispatch = useDispatch();
+  const mode = useSelector((state) => state.mode.isDark);
   const [search, setsearch] = useState("");
   const navigate = useNavigate();
   function submithandler(e) {
@@ -19,48 +24,58 @@ const SearchBar = () => {
       setsearch("");
     }
   }
+  function modehandler() {
+    dispatch(modeactions.toggleMode());
+  }
   return (
-    <Paper
-      sx={{
-        borderRadius: "40px",
-      }}
-      component="form"
-      onSubmit={submithandler}
-    >
-      <TextField
-        id="search"
-        label="Search"
-        variant="filled"
-        value={search}
-        onChange={(e) => setsearch(e.target.value)}
+    <>
+      <Paper
         sx={{
-          width: {
-            sm: "400px",
-            xs: "200px",
-            outline: "none",
-          },
+          borderRadius: "40px",
         }}
-        fullWidth
-        InputProps={{
-          endAdornment: (
-            <InputAdornment position="end">
-              <Button type="submit" onClick={submithandler}>
-                <IconButton
-                  size="small"
-                  sx={{
-                    color: "red",
-                  }}
-                >
-                  <SearchIcon />
-                </IconButton>
-              </Button>
-            </InputAdornment>
-          ),
-          disableUnderline: true,
-          disableInjectingGlobalStyles: true,
-        }}
-      />
-    </Paper>
+        component="form"
+        onSubmit={submithandler}
+      >
+        <TextField
+          id="search"
+          label="Search"
+          variant="filled"
+          value={search}
+          onChange={(e) => setsearch(e.target.value)}
+          sx={{
+            width: {
+              sm: "400px",
+              xs: "200px",
+              outline: "none",
+            },
+          }}
+          fullWidth
+          InputProps={{
+            endAdornment: (
+              <InputAdornment position="end">
+                <Button type="submit" onClick={submithandler}>
+                  <IconButton
+                    size="small"
+                    sx={{
+                      color: "red",
+                    }}
+                  >
+                    <SearchIcon />
+                  </IconButton>
+                </Button>
+              </InputAdornment>
+            ),
+            disableUnderline: true,
+            disableInjectingGlobalStyles: true,
+          }}
+        />
+      </Paper>
+      {/* <Box component="div" onClick={modehandler}>
+        <Typography variant="h4" color="secondary">
+          {mode ? "Light" : "Dark"} mode
+        </Typography>
+      </Box> */}
+    </>
   );
 };
 

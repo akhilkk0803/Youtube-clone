@@ -10,18 +10,8 @@ import {
 import History from "./components/History";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Error from "./components/Error";
+import { useSelector, UseSelector } from "react-redux/es/hooks/useSelector";
 
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: "#000",
-    },
-    secondary: {
-      main: "#fff",
-      dark: "#efefef",
-    },
-  },
-});
 const router = createBrowserRouter([
   {
     path: "/",
@@ -51,9 +41,25 @@ const router = createBrowserRouter([
     ],
   },
 ]);
-const App = () => (
-  <ThemeProvider theme={theme}>
-    <RouterProvider router={router} />
-  </ThemeProvider>
-);
+
+const App = () => {
+  const mode = useSelector((state) => state.mode.isDark);
+  const theme = createTheme({
+    palette: {
+      primary: {
+        main: mode ? "#000" : "#fff",
+      },
+      secondary: {
+        main: mode ? "#fff" : "#000",
+        dark: mode ? "#efefef" : "#000",
+      },
+    },
+  });
+  return (
+    <ThemeProvider theme={theme}>
+      <RouterProvider router={router} />
+    </ThemeProvider>
+  );
+};
+
 export default App;

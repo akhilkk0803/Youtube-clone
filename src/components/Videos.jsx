@@ -30,6 +30,11 @@ const Videos = ({ data, direction }) => {
                   display: "flex",
                   justifyContent: "center",
                   alignItems: "center",
+                  width: {
+                    xs: "100%",
+                    sm: "450px",
+                    md: "300px",
+                  },
                 }}
               >
                 {/* {console.log(el)} */}

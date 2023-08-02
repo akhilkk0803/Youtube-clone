@@ -40,11 +40,11 @@ const CardVideo = ({
         width: {
           md: "300px",
           xs: "100%",
-          marginTop: "20px",
-          alignItems: "center",
-          justifyContent: "center",
-          marginRight: "10px",
         },
+        marginTop: "20px",
+        alignItems: "center",
+        justifyContent: "centexr",
+        marginRight: "10px",
       }}
     >
       <NavLink to={videoId ? `/video/${videoId}` : "/"} onClick={clickhandler}>
