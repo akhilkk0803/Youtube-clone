@@ -11,7 +11,7 @@ import React from "react";
 import CardVideo from "./CardVideo";
 import CardChannel from "./CardChannel";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
-
+import { motion } from "framer-motion";
 const Videos = ({ data, direction }) => {
   console.log(data);
   return (
@@ -35,11 +35,26 @@ const Videos = ({ data, direction }) => {
                     sm: "450px",
                     md: "300px",
                   },
+                  marginTop: "20px",
+                  alignItems: "center",
+                  justifyContent: "centexr",
+                  marginRight: "10px",
                 }}
               >
-                {/* {console.log(el)} */}
-                {el?.id?.videoId && <CardVideo video={el} />}
-                {el?.id?.channelId && <CardChannel channel={el} />}
+                <motion.div
+                  whileHover={{
+                    scale: 1.05,
+                    boxShadow:
+                      "box-shadow:box-shadow: rgba(231, 231, 231, 0.788) 0px 8px 24px",
+                  }}
+                  style={{
+                    width: "inherit",
+                  }}
+                >
+                  {/* {console.log(el)} */}
+                  {el?.id?.videoId && <CardVideo video={el} />}
+                  {el?.id?.channelId && <CardChannel channel={el} />}
+                </motion.div>
               </Box>
             )
         )

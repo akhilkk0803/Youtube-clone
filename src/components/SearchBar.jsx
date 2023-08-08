@@ -32,6 +32,7 @@ const SearchBar = () => {
       <Paper
         sx={{
           borderRadius: "40px",
+          
         }}
         component="form"
         onSubmit={submithandler}
